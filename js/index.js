@@ -38,6 +38,10 @@ $(document).ready(function() {
       }
    });
 
+   /*
+   * function to display result in index.html
+   * @param response
+   */
    function displayResults(response) {
       for (var i = 0; i < response.items.length; i+=2) {
         item = response.items[i];
@@ -68,10 +72,14 @@ $(document).ready(function() {
 
 
 
-//format html output for card
+/*
+* card element formatter using es6 backticks and templates (indivial card)
+* @param bookImg title author publisher bookLink
+* @return htmlCard
+*/
 function formatOutput(bookImg, title, author, publisher, bookLink) {
   // console.log(title + ""+ author +" "+ publisher +" "+ bookLink+" "+ bookImg)
-  var htmlCard1 = `<div class="col-lg-6">
+  var htmlCard = `<div class="col-lg-6">
     <div class="card" style="">
       <div class="row no-gutters">
         <div class="col-md-4">
@@ -88,10 +96,10 @@ function formatOutput(bookImg, title, author, publisher, bookLink) {
       </div>
     </div>
   </div>`
-  return htmlCard1;
+  return htmlCard;
 }
 
-//error handling
+//handling error for empty search box
 function displayError() {
   alert("search term can not be empty!")
 }
