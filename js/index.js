@@ -8,6 +8,7 @@ $(document).ready(function() {
 
   //listener for search button
   $("#search").click(function() {
+    outputList.innerHTML = ""; //empty html output
      searchData = $("#search-box").val();
      //handling empty search input field
      if(searchData === "" || searchData === null) {
@@ -33,11 +34,10 @@ $(document).ready(function() {
           error: function () {
             alert("Something went wrong.. <br>"+"Try again!");
           }
-
         });
-        //reseting search FIELDS
-        $("#search-box").val("");
+
       }
+      $("#search-box").val(""); //clearn search box
    });
 
    /*
@@ -68,7 +68,6 @@ $(document).ready(function() {
 
         console.log(outputList);
       }
-      return false;
    }
 
    /*
@@ -102,6 +101,5 @@ $(document).ready(function() {
    function displayError() {
      alert("search term can not be empty!")
    }
-
 
 });
