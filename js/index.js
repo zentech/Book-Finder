@@ -35,6 +35,8 @@ $(document).ready(function() {
           }
 
         });
+        //reseting search FIELDS
+        $("#search-box").val("");
       }
    });
 
@@ -49,14 +51,14 @@ $(document).ready(function() {
         author1 = item.volumeInfo.authors;
         publisher1 = item.volumeInfo.publisher;
         bookLink1 = item.volumeInfo.previewLink;
-        bookImg1 = item.volumeInfo.imageLinks.smallThumbnail;
+        bookImg1 = item.volumeInfo.imageLinks.thumbnail;
 
         item2 = response.items[i+1];
         title2 = item2.volumeInfo.title;
         author2 = item2.volumeInfo.authors;
         publisher2 = item2.volumeInfo.publisher;
         bookLink2 = item2.volumeInfo.previewLink;
-        bookImg2 = item2.volumeInfo.imageLinks.smallThumbnail;
+        bookImg2 = item2.volumeInfo.imageLinks.thumbnail;
 
         // in production code, item.text should have the HTML entities escaped.
         outputList.innerHTML += '<div class="row">' +
@@ -66,40 +68,40 @@ $(document).ready(function() {
 
         console.log(outputList);
       }
+      return false;
    }
 
+   /*
+   * card element formatter using es6 backticks and templates (indivial card)
+   * @param bookImg title author publisher bookLink
+   * @return htmlCard
+   */
+   function formatOutput(bookImg, title, author, publisher, bookLink) {
+     // console.log(title + ""+ author +" "+ publisher +" "+ bookLink+" "+ bookImg)
+     var htmlCard = `<div class="col-lg-6">
+       <div class="card" style="">
+         <div class="row no-gutters">
+           <div class="col-md-4">
+             <img src="${bookImg}" class="card-img" alt="...">
+           </div>
+           <div class="col-md-8">
+             <div class="card-body">
+               <h5 class="card-title">${title}</h5>
+               <p class="card-text">Author: ${author}</p>
+               <p class="card-text"><small class="text-muted">Publisher: ${publisher}</small></p>
+               <a target="_blank" href="${bookLink}" class="btn btn-secondary">More Info</a>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>`
+     return htmlCard;
+   }
+
+   //handling error for empty search box
+   function displayError() {
+     alert("search term can not be empty!")
+   }
+
+
 });
-
-
-
-/*
-* card element formatter using es6 backticks and templates (indivial card)
-* @param bookImg title author publisher bookLink
-* @return htmlCard
-*/
-function formatOutput(bookImg, title, author, publisher, bookLink) {
-  // console.log(title + ""+ author +" "+ publisher +" "+ bookLink+" "+ bookImg)
-  var htmlCard = `<div class="col-lg-6">
-    <div class="card" style="">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="${bookImg}" class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">${title}</h5>
-            <p class="card-text">Author: ${author}</p>
-            <p class="card-text"><small class="text-muted">Publisher: ${publisher}</small></p>
-            <a href="${bookLink}" class="btn btn-secondary">More Info</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>`
-  return htmlCard;
-}
-
-//handling error for empty search box
-function displayError() {
-  alert("search term can not be empty!")
-}
