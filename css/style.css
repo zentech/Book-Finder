@@ -1,0 +1,22 @@
+/* css stylesheet for books api PROJECT
+  author: Jorge L. jlvazquez
+  date: 2/24/2019
+*/
+
+body {
+  background-color: #76a9e0;
+}
+
+.center {
+  margin: auto;
+  margin-top: 200px;
+}
+
+.heading {
+  font-family: 'Lato', sans-serif;
+}
+
+.book-list {
+  margin-top: 50px;
+  /* visibility: hidden; */
+}
