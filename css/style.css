@@ -5,6 +5,14 @@
 
 body {
   /* background-color: #76a9e0; */
+  background-image: url("../img/bg-book2.jpg");
+  background-color: #017199;
+  /* Full height */
+  height: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .center {
@@ -12,8 +20,13 @@ body {
   margin-top: 200px;
 }
 
-.heading {
-  font-family: 'Lato', sans-serif;
+#header {
+  font-family: 'Righteous', sans-serif;
+  font-size: 3rem;
+}
+
+h2 {
+  font-family: 'Righteous', sans-serif;
 }
 
 .book-list {

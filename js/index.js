@@ -2,9 +2,9 @@ $(document).ready(function() {
   var item, tile, author, publisher, bookLink, bookImg;
   var outputList = document.getElementById("list-output");
   var bookUrl = "https://www.googleapis.com/books/v1/volumes?q=";
-  var apiKey = ":keyes&key=AIzaSyDtXC7kb6a7xKJdm_Le6_BYoY5biz6s8Lw"
+  var apiKey = "key=AIzaSyDtXC7kb6a7xKJdm_Le6_BYoY5biz6s8Lw";
+  var placeHldr = '<img src="https://via.placeholder.com/150">';
   var searchData;
-  //flowers+inauthor:keyes&key=yourAPIKey";
 
   //listener for search button
   $("#search").click(function() {
@@ -35,7 +35,6 @@ $(document).ready(function() {
             alert("Something went wrong.. <br>"+"Try again!");
           }
         });
-
       }
       $("#search-box").val(""); //clearn search box
    });
@@ -51,17 +50,17 @@ $(document).ready(function() {
         author1 = item.volumeInfo.authors;
         publisher1 = item.volumeInfo.publisher;
         bookLink1 = item.volumeInfo.previewLink;
-        bookImg1 = item.volumeInfo.imageLinks.thumbnail;
+        bookImg1 = (item.volumeInfo.imageLinks) ? item.volumeInfo.imageLinks.thumbnail : placeHldr ;
 
         item2 = response.items[i+1];
         title2 = item2.volumeInfo.title;
         author2 = item2.volumeInfo.authors;
         publisher2 = item2.volumeInfo.publisher;
         bookLink2 = item2.volumeInfo.previewLink;
-        bookImg2 = item2.volumeInfo.imageLinks.thumbnail;
+        bookImg2 = (item.volumeInfo.imageLinks) ? item.volumeInfo.imageLinks.thumbnail : placeHldr ;
 
         // in production code, item.text should have the HTML entities escaped.
-        outputList.innerHTML += '<div class="row">' +
+        outputList.innerHTML += '<div class="row mt-4">' +
                                 formatOutput(bookImg1, title1, author1, publisher1, bookLink1) +
                                 formatOutput(bookImg2, title2, author2, publisher2, bookLink2) +
                                 '</div>';
@@ -87,7 +86,7 @@ $(document).ready(function() {
              <div class="card-body">
                <h5 class="card-title">${title}</h5>
                <p class="card-text">Author: ${author}</p>
-               <p class="card-text"><small class="text-muted">Publisher: ${publisher}</small></p>
+               <p class="card-text">Publisher: ${publisher}</p>
                <a target="_blank" href="${bookLink}" class="btn btn-secondary">More Info</a>
              </div>
            </div>
