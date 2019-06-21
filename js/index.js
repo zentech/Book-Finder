@@ -60,7 +60,7 @@ $(document).ready(function() {
         publisher2 = item2.volumeInfo.publisher;
         bookLink2 = item2.volumeInfo.previewLink;
         bookIsbn2 = item2.volumeInfo.industryIdentifiers[1].identifier
-        bookImg2 = (item.volumeInfo.imageLinks) ? item.volumeInfo.imageLinks.thumbnail : placeHldr ;
+        bookImg2 = (item2.volumeInfo.imageLinks) ? item2.volumeInfo.imageLinks.thumbnail : placeHldr ;
 
         // in production code, item.text should have the HTML entities escaped.
         outputList.innerHTML += '<div class="row mt-4">' +
@@ -91,7 +91,7 @@ $(document).ready(function() {
                <h5 class="card-title">${title}</h5>
                <p class="card-text">Author: ${author}</p>
                <p class="card-text">Publisher: ${publisher}</p>
-               <a target="_blank" href="${viewUrl}" class="btn btn-secondary">More Info</a>
+               <a target="_blank" href="${viewUrl}" class="btn btn-secondary">Read Book</a>
              </div>
            </div>
          </div>
